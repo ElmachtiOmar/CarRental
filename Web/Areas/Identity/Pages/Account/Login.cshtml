@@ -1,0 +1,103 @@
+﻿@page
+@model LoginModel
+
+
+
+      <section id="section-hero" aria-label="section" class="jarallax">
+        <img src="~/images/background/2.jpg" class="jarallax-img" alt="" />
+        <div class="v-center">
+          <div class="container">
+            <div class="row align-items-center">
+              <div class="col-lg-4 offset-lg-4">
+                <div
+                  class="padding40 rounded-3 shadow-soft"
+                  data-bgcolor="#ffffff"
+                >
+                  <h4>Login</h4>
+                  <div class="spacer-10"></div>
+                  <form
+                    id="account"
+                    class="form-border"
+                    method="post"
+                   
+                  >
+                            <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+                    <div class="field-set">
+                      <input
+                        asp-for="Input.Email"
+                        class="form-control"
+                        autocomplete="username"
+                        aria-required="true"
+                        placeholder="name@example.com"
+                      />
+                    </div>
+                    <div class="field-set">
+                      <input
+                        asp-for="Input.Password"
+                        class="form-control"
+                        autocomplete="current-password"
+                        aria-required="true"
+                        placeholder="password"
+                      />
+                    </div>
+
+                    <div class="field-set">
+                      <label asp-for="Input.RememberMe" class="form-label">
+                        <input
+                          class="form-check-input"
+                          asp-for="Input.RememberMe"
+                        />
+                        @Html.DisplayNameFor(m => m.Input.RememberMe)
+                      </label>
+                    </div>
+
+                    <div id="submit">
+                      <button
+                        id="login-submit"
+                        type="submit"
+                        class="w-100 btn btn-lg btn-primary"
+                      >
+                        Log in
+                      </button>
+                    </div>
+                  </form>
+                        <div class="title-line">Register&nbsp;as&nbsp;new&nbsp;user</div>
+
+                        <div class="col-lg-12">
+                            <a class="btn-sc btn-fullwidth mb10 text-center" asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">
+                                <img src="~/images"
+                                     alt="" />Register
+                            </a>
+                        </div>
+                        <div class="title-line">Or&nbsp;sign&nbsp;up&nbsp;with</div>
+
+                  <div class="row g-2">
+                    <div class="col-lg-6">
+                      <a class="btn-sc btn-fullwidth mb10" href="#"
+                        ><img
+                          src="~/images/svg/google_icon.svg"
+                          alt=""
+                        />Google</a
+                      >
+                    </div>
+                    <div class="col-lg-6">
+                      <a class="btn-sc btn-fullwidth mb10" href="#"
+                        ><img
+                          src="~/images/svg/facebook_icon.svg"
+                          alt=""
+                        />Facebook</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,73 @@
+﻿@model Web.ViewModel.OfferViewModel
+
+@{
+    ViewData["Title"] = "Create Offer";
+}
+<!-- section begin -->
+<section id="subheader" class="jarallax text-light">
+    <img src="~/images/background/subheader.jpg" class="jarallax-img" alt="">
+    <div class="center-y relative text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h1>Create New Offer</h1>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- section close -->
+
+
+<section aria-label="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                @using (Html.BeginForm("Create", "Offer", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    // Add anti-forgery token for form security
+
+
+
+
+                    @Html.DropDownListFor(
+                             m => m.Offer.Car.Id, // Bind to the Car.Id of the Offer in the view model
+                             new SelectList(Model.Cars, "Id", "Model"),
+                             "Select a Car",
+                             new { @class = "form-control" }
+                             )
+                        @Html.ValidationMessageFor(m => m.Offer.Car.Id, "", new { @class = "text-danger" })
+                        
+                    <label>Price</label>
+
+                    <div class="form-floating mb-3">
+
+                        @Html.EditorFor(m => m.Offer.Price, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter a price" } })
+                        @Html.ValidationMessageFor(m => m.Offer.Price, "", new { @class = "text-danger" })
+                    </div>
+                    <label>Location</label>
+
+                    <div class="form-floating mb-3">
+
+                        @Html.EditorFor(m => m.Offer.Location, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter a location" } })
+                        @Html.ValidationMessageFor(m => m.Offer.Location, "", new { @class = "text-danger" })
+                    </div>
+                    <label>Suplier</label>
+                    <div class="form-floating mb-3">
+
+                        @Html.EditorFor(m => m.Offer.Supplier, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter supplier name" } })
+                        @Html.ValidationMessageFor(m => m.Offer.Supplier, "", new { @class = "text-danger" })
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Create</button>
+                }
+                <div>
+
+                    <a href="@Url.Action("Index", "Offer")">Back to List</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

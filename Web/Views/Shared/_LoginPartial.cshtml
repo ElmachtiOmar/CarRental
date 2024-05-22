@@ -1,0 +1,58 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+
+
+@if (SignInManager.IsSignedIn(User))
+{
+
+
+                <div class="de-flex-col">
+                    <div class="menu_side_area">
+                        <div class="de-login-menu">
+
+                            <span id="de-click-menu-profile" class="de-menu-profile">
+                                <img src="~/images/profile/1.jpg" class="img-fluid" alt="">
+                            </span>
+
+
+
+                            <div id="de-submenu-profile" class="de-submenu">
+                                <div class="d-name">
+                                    <h4>@User.Identity?.Name</h4>
+                                    <span class="text-gray">monica@rentaly.com</span>
+                                </div>
+
+                                <div class="d-line"></div>
+
+                                <ul class="menu-col">
+                                    <li><a href="#"><i class="fa fa-home"></i>Dashboard</a></li>
+                                    <li><a href="#"><i class="fa fa-user"></i>My Profile</a></li>
+                                    <li><a href="#"><i class="fa fa-calendar"></i>My Orders</a></li>
+                                    <li><a href="#"><i class="fa fa-car"></i>My Favorite Cars</a></li>
+                                    <li>
+                                        <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                                            <button type="submit" class="unstyled-button"><i class="fa fa-sign-out"></i>Sign Out</button>
+                                        </form>
+                                    </li>
+                                </ul>
+                            </div>
+                            <span id="menu-btn"></span>
+                        </div>
+                    </div>
+                </div>
+
+}
+else
+{
+    <div class="de-flex-col">
+                                <div class="menu_side_area">
+
+        <a class="btn-main" asp-area="Identity" asp-page="/Account/Login">Login</a>
+        <span id="menu-btn"></span>
+        </div>
+        </div>
+}
+
+    
